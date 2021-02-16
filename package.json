@@ -1,0 +1,24 @@
+{
+  "name": "socket-io-tutorial",
+  "version": "1.0.0",
+  "description": "Socket.io tutorial with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [
+    "socket.io",
+    "nodejs'"
+  ],
+  "author": "Prathamesh Mali",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
