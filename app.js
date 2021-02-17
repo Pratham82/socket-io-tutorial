@@ -1,14 +1,19 @@
-console.log('test')
-const express = require('express')
+const app = require('express')()
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
 
-const app = express()
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
 
-//Routing
-app.get('/', (_, res) =>
-  res.json({ status: 'Successful', message: 'Express Server Stated' })
-)
+io.on('connection', socket => {
+  console.log('new User connected')
+  socket.on('chat message', message => {
+    console.log(`message: ${message}`)
+    io.emit('chat message', message)
+  })
+})
 
-// Starting server
-app.listen(process.env.PORT || 3000, () =>
+http.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on http://localhost:${process.env.PORT || 3000}`)
-)
+})
